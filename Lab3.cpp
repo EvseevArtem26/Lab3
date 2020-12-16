@@ -27,7 +27,7 @@ int main()
         }
         else
         {
-            if (symbol != ' ')
+            if (symbol != ' ' && symbol!='~')
             {
                 int num2 = operands.top();
                 operands.pop();
@@ -44,11 +44,20 @@ int main()
                 }
                 flag = false; //если пробел идет после оператора, ветвь ниже не выполняется
             }
+            else if (symbol == '~')
+            {
+                int num = operands.top();
+                operands.pop();
+                operands.push(-num);
+                flag = false;
+            }
             else if (symbol == ' ' && flag)//если пробел идет после числа, оно заносится в стек
             {
                 operands.push(number);
                 number = 0;
             }
+
+            
         }
     }
 
